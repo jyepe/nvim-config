@@ -18,7 +18,6 @@
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.mini-move",
     "lazyvim.plugins.extras.editor.refactoring",
-    "lazyvim.plugins.extras.editor.yanky",
     "lazyvim.plugins.extras.test.core"
   ],
   "install_version": 8,

@@ -10,7 +10,7 @@ return {
         "shfmt",
         -- HTML/CSS LSPs (not covered by extras)
         "html-lsp",
-        "cssls",
+        "css-lsp",
         -- JS/TS formatting daemon (extras configure it, but ensure it's installed)
         "prettierd",
       },
@@ -46,12 +46,29 @@ return {
     "nvim-neotest/neotest",
     optional = true,
     dependencies = {
-      "thenbe/neotest-jest",
+      "nvim-neotest/neotest-jest",
     },
     opts = {
       adapters = {
         ["neotest-jest"] = {},
       },
+    },
+  },
+
+  -- Yanky: improved yank/paste ring (cycle through yank history with [y / ]y)
+  {
+    "gbprod/yanky.nvim",
+    event = "LazyFile",
+    opts = {},
+    keys = {
+      { "<leader>p", function() require("telescope").extensions.yank_history.yank_history() end, desc = "Open Yank History" },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after selection" },
+      { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before selection" },
+      { "[y", "<Plug>(YankyCycleForward)", desc = "Cycle forward through yank history" },
+      { "]y", "<Plug>(YankyCycleBackward)", desc = "Cycle backward through yank history" },
     },
   },
 }
