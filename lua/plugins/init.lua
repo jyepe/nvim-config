@@ -55,6 +55,20 @@ return {
     },
   },
 
+  -- Yazi: terminal file manager integration (open yazi in a floating window)
+  -- Requires yazi installed on the system (already installed via Chocolatey)
+  {
+    "mikavilpas/yazi.nvim",
+    event = "LazyFile",
+    keys = {
+      { "<leader>-", "<cmd>Yazi<cr>", desc = "Open Yazi file manager" },
+      { "<leader>cw", "<cmd>Yazi cwd<cr>", desc = "Open Yazi in cwd" },
+    },
+    opts = {
+      open_for_directories = false,
+    },
+  },
+
   -- Yanky: improved yank/paste ring (cycle through yank history with [y / ]y)
   {
     "gbprod/yanky.nvim",
