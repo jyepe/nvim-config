@@ -1,22 +1,4 @@
 return {
-  -- SynthWave '84 Theme
-  {
-    "LunarVim/synthwave84.nvim",
-    name = "synthwave84",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("synthwave84").setup({
-        glow = {
-          error_msg = true,
-          type2 = true,
-          func = true,
-          keyword = true,
-        }
-      })
-    end,
-  },
-
   -- Set LazyVim to use TokyoNight
   {
     "LazyVim/LazyVim",
@@ -54,6 +36,16 @@ return {
       
       -- Enable it by default
       vim.cmd("TransparentEnable")
+
+      -- Give floating window borders (Lazy, Mason, LSP hover, etc.) a
+      -- visible accent color instead of the default gray that blends in
+      local function set_float_border()
+        vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#7aa2f7", bg = "NONE" })
+      end
+      set_float_border()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = set_float_border,
+      })
     end,
   },
 }
